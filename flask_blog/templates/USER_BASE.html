@@ -16,7 +16,7 @@
   <div class="dropdown-menu">
     <a class="dropdown-item" href="#">Home</a>
     <a class="dropdown-item" href="#">Courses</a>
-    <a class="dropdown-item" href="{{ url_for('verify',username = current_user.username) }}">Verify account <div id="circle" size="10"></div></a>
+    <a class="dropdown-item" href="{{ url_for('users.verify',username = current_user.username) }}">Verify account <div id="circle" size="10"></div></a>
     <a class="dropdown-item" href="#">Logout</a>
   </div>
 </div>
@@ -39,9 +39,9 @@
 
     {%  if current_user.role == 2 %}
 <div class="text-center">
-    <a href="{{ url_for('user_profile',username = current_user.username) }}"><img id="top-icon-u" style="margin-top: 60px" class="icon-u" src="../static/sessions.png" alt=""></a>
-            <a href="{{ url_for('user_profile',username = current_user.username) }}" style="color: white"><img class="icon-u" src="../static/window-maximize.png" alt=""></a>
-            <a href="{{ url_for('user_profile',username = current_user.username) }}" style="color: white"><img class="icon-u" src="../static/discover.png" alt=""></a>
+    <a href="{{ url_for('users.user_profile',username = current_user.username) }}"><img id="top-icon-u" style="margin-top: 60px" class="icon-u" src="../static/sessions.png" alt=""></a>
+            <a href="{{ url_for('users.user_profile',username = current_user.username) }}" style="color: white"><img class="icon-u" src="../static/window-maximize.png" alt=""></a>
+            <a href="{{ url_for('users.user_profile',username = current_user.username) }}" style="color: white"><img class="icon-u" src="../static/discover.png" alt=""></a>
 
 
                 <a href="/SETTINGS" style="color: white;padding: 0px"><img class="icon-u" src="../static/badge.png" alt=""></a>
@@ -49,13 +49,13 @@
                 <div id="botrnav" style="padding: 0px">
                     <a href="/SETTINGS" style="color: white"><img class="icon-u" src="../static/SETTINGS.png" alt="" style="color: white"></a>
                     <br>
-                    <a href="{{ url_for('logout',username = current_user.username) }}" style="color: white"><img class="icon-u" src="../static/logout.png" alt=""></a>
+                    <a href="{{ url_for('users.logout',username = current_user.username) }}" style="color: white"><img class="icon-u" src="../static/logout.png" alt=""></a>
                 </div>
 </div>
     {% else %}
 <div class="text-center">
 
-            <a href="{{ url_for('user_profile',username = current_user.username) }}" style="color: white"><img id="top-icon-u" class="icon-u" src="../static/sessions.png" alt=""></a>
+            <a href="{{ url_for('users.user_profile',username = current_user.username) }}" style="color: white"><img id="top-icon-u" class="icon-u" src="../static/sessions.png" alt=""></a>
             <a href="/DASHBOARD" style="color: white"><img class="icon-u" src="../static/window-maximize.png" alt=""></a>
             <a href="/DISCOVER" style="color: white"><img class="icon-u" src="../static/discover.png" alt=""></a>
             <a href="/UPLOADS" style="color: white"><img class="icon-u" src="../static/uploads.png" alt=""></a>
@@ -65,7 +65,7 @@
                 <div id="botrnav" style="padding: 0px">
                     <a href="/SETTINGS" style="color: white"><img class="icon-u" src="../static/SETTINGS.png" alt="" style="color: white"></a>
                     <br>
-                    <a href="{{ url_for('logout') }}" style="color: white"><img class="icon-u" src="../static/logout.png" alt=""></a>
+                    <a href="{{ url_for('users.logout') }}" style="color: white"><img class="icon-u" src="../static/logout.png" alt=""></a>
                 </div>
     {% endif %}
     </div>
@@ -88,9 +88,9 @@
       {% endif %}</p>
         {% if user == current_user %}
         {% elif not current_user.is_following(user) %}
-        <button style="color: white" id="card-btn"><a href="{{ url_for('follow', username=user.username) }}" style="color: white">Subscribe</a></button></p>
+        <button style="color: white" id="card-btn"><a href="{{ url_for('users.follow', username=user.username) }}" style="color: white">Subscribe</a></button></p>
         {% else %}
-        <button style="width: fit-content;color: white" id="card-btn"><a style="color: white" href="{{ url_for('unfollow', username=user.username) }}">Unsubscribe</a></button>
+        <button style="width: fit-content;color: white" id="card-btn"><a style="color: white" href="{{ url_for('users.unfollow', username=user.username) }}">Unsubscribe</a></button>
         {% endif %}
 </div>
 </div>

@@ -30,7 +30,7 @@
        <card class="card shadow-lg" id="login-card">
     <card class="card-body text-center">
         <img src="../static/sign%20up%20avatar.png" alt="" width="130">
-    <form id="signup-form" action="{{ url_for('reset_request') }}" method="POST">
+    <form id="signup-form" action="{{ url_for('users.reset_request') }}" method="POST">
 
         <fieldset>
 
@@ -61,7 +61,7 @@
         <br>
         <br>
 
-    <span><a href="{{ url_for('login') }}" style="">Log in</a></span>
+    <span><a href="{{ url_for('users.login') }}" style="">Log in</a></span>
     </card>
     </card>
    </div>

@@ -68,7 +68,7 @@
                                 <card class=" card video-thumb-card" style="margin-left: 50px">
                                     <card class="card-body">
 
-                                        <li><a href="{{ url_for('video',upload_ref=upload.upload_ref) }}"><video width="300" height="200" type="video/mp4" src="../static/videos/discover videos/{{ upload.upload_ref }}" alt=""></video></a></li></li>
+                                        <li><a href="{{ url_for('posts.video',upload_ref=upload.upload_ref) }}"><video width="300" height="200" type="video/mp4" src="../static/videos/discover videos/{{ upload.upload_ref }}" alt=""></video></a></li></li>
                                         <div class="row">
                                         <div class="col-3">
                                             <span style="font-size: 10px"><img src="../static/profile_pics/{{ upload.uploader.image_file }}" alt="" width="40" class="rounded-circle"></span>

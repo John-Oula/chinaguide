@@ -1,7 +1,9 @@
 from flask_login import current_user
-from flask_wtf_ext import FlaskForm
-from wtforms import *
+from flask_wtf import FlaskForm
+from wtforms import validators,StringField, PasswordField, SubmitField, ValidationError, IntegerField, DateField, FileField
 from wtforms.validators import Required
+
+from flask_blog.models import User
 
 
 class Signup_form(FlaskForm):
@@ -74,37 +76,6 @@ class UpdateAccount(FlaskForm):
             user = User.query.filter_by(username=username.data).first()
             if user:
                 raise ValidationError('That username has been taken')
-
-
-from flask_wtf_ext import FlaskForm
-from wtforms import *
-
-from flask_wtf.file import FileField
-
-from flask_blog.models import User
-
-
-class Session_form(FlaskForm):
-    title = StringField('TITLE',[validators.DataRequired()])
-    description = TextAreaField('DESCRIPTION',[validators.DataRequired()])
-    category = SelectField('CATEGORY', choices=[('MANDARIN','MANDARIN'), ('LEGAL', 'LEGAL'), ('CAREER', 'CAREER'), ('BUSINESS', 'BUSINESS'), ('LIVING', 'LIVING')],widget=None)
-    date = DateTimeField("DATE",[validators.DataRequired()])
-class Upload_form(FlaskForm):
-    title = StringField('Title')
-    category = SelectField('Category', choices=[('Mandarin','Mandarin'), ('Communication skills', 'Communication skills'), ('Academics', 'Academics'), ('Visa', 'Visa'), ('Living', 'Living'), ('Talent policy', 'Talent policy'), ('Finance & Law', 'Finance & Law'), ('Entrepreneur', 'Entrepreneur'), ('Others', 'Others')],widget=None)
-    description = StringField('Description')
-    price = StringField('Price')
-    upload = FileField('Upload')
-    submit = SubmitField('Submit')
-
-class Lesson_form(FlaskForm):
-    title = StringField()
-    description = TextAreaField()
-
-class Comment_form(FlaskForm):
-    content = StringField()
-    submit = SubmitField('Submit')
-
 
 class Request_reset(FlaskForm):
     email = StringField('EMAIL', [validators.Email()])

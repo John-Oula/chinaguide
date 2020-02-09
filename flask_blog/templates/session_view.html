@@ -52,7 +52,7 @@
                             <div>0 series</div><br>
                             <div class="orange">Description</div>
                             <div>{{ session_post.description }} </div><br>
-                                <button value="VERIFY" id="card-btn" style="color: white"><a href="{{ url_for('session_verify',id= session_post.id) }}">VERIFY</a></button>
+                                <button value="VERIFY" id="card-btn" style="color: white"><a href="{{ url_for('users.session_verify',id= session_post.id) }}">VERIFY</a></button>
 
                                 </div>
                         </div>

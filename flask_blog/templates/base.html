@@ -33,17 +33,17 @@
         <a class="nav-link " href="/" style="color: white;font-family: josefin-sans,sans-serif;">HOME </a>
       </li>
       <li class="nav-item nav-tag">
-        <a class="nav-link " href="{{ url_for('discover_h') }}"  style="color: white ;font-family: josefin-sans,sans-serif;">DISCOVER</a>
+        <a class="nav-link " href="{{ url_for('main.discover_h') }}"  style="color: white ;font-family: josefin-sans,sans-serif;">DISCOVER</a>
       </li>
       <li class="nav-item nav-tag">
-        <a class="nav-link " href="{{ url_for('consult') }}"  style="color: white;font-family: josefin-sans,sans-serif;  ">CONSULTANCY</a>
+        <a class="nav-link " href="{{ url_for('main.consult') }}"  style="color: white;font-family: josefin-sans,sans-serif;  ">CONSULTANCY</a>
       </li>
 
        <li class="nav-item nav-tag">
-        <a class="nav-link " href="{{ url_for('unitalk') }}"  style="color: white;font-family: josefin-sans,sans-serif;"><img src="../static/UNITALK.new.png" width="100" alt=""></a>
+        <a class="nav-link " href="{{ url_for('main.unitalk') }}"  style="color: white;font-family: josefin-sans,sans-serif;"><img src="../static/UNITALK.new.png" width="100" alt=""></a>
       </li>
                <li class="nav-item nav-tag">
-        <a class="nav-link " href="{{ url_for('corona') }}"  style="color: white;font-family: josefin-sans,sans-serif;">CORONAVIRUS</a>
+        <a class="nav-link " href="{{ url_for('main.corona') }}"  style="color: white;font-family: josefin-sans,sans-serif;">CORONAVIRUS</a>
       </li>
 
 
@@ -53,10 +53,10 @@
         </form>
       </li>
     <li class="nav-item nav-tag">
-        <a class="nav-link" href="{{ url_for('signup') }}"  style="color: white;font-family: josefin-sans,sans-serif;">SIGN UP</a>
+        <a class="nav-link" href="{{ url_for('users.signup') }}"  style="color: white;font-family: josefin-sans,sans-serif;">SIGN UP</a>
       </li>
     <li class="nav-item nav-tag">
-        <a class="nav-link" href="{{ url_for('login') }}"><img src="../static/LOG%20IN.png" alt=""></a>
+        <a class="nav-link" href="{{ url_for('users.login') }}"><img src="../static/LOG%20IN.png" alt=""></a>
       </li>
     </ul>
   </div>

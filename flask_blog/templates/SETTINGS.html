@@ -74,8 +74,8 @@
                   <p>User</p>
                   {% endif %}
               </td>
-              <td><a href="{{ url_for('userview', username=user.username) }}">{{ user.fullname }}</a></td>
-              <td><a href="{{ url_for('userview', username=user.username) }}">{{ user.username }}</a></td>
+              <td><a href="{{ url_for('users.userview', username=user.username) }}">{{ user.fullname }}</a></td>
+              <td><a href="{{ url_for('users.userview', username=user.username) }}">{{ user.username }}</a></td>
               <td>{{ user.email }}</td>
               <td>{{ user.nationality }}</td>
               <td>{{ user.occupation }}</td>

@@ -31,9 +31,9 @@
                 <card class="card-body">
                     <div class="row">
                         <div class="col-5">
-                        <a href="{{ url_for('video_view',upload_ref = upload.upload_ref) }}"><video src="../static/videos/discover videos/{{ upload.upload_ref }}" width="100" height="50"></video></a>
+                        <a href="{{ url_for('posts.video_view',upload_ref = upload.upload_ref) }}"><video src="../static/videos/discover videos/{{ upload.upload_ref }}" width="100" height="50"></video></a>
                                                 <img width="20" src="../static/heart.png" alt="">  {{ upload.liked.count() }}
-
+url_for
                             </div>
                         <div class="col-7">
                         <p>{{ upload.title }}<br>

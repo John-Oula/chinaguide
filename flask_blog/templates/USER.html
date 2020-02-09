@@ -41,11 +41,11 @@
                    <div class="dropdown-menu">
                        <!-- Dropdown menu links -->
                        <ul>
-                       <li><a  href="{{ url_for('update_to_admin', id = user.id) }}" id="myBtn" style="color: black">Admin</a></li>
-                       <li><a  href="{{ url_for('assign_session', id = user.id) }}" id="myBtn" style="color: black">Session</a></li>
-                       <li><a  href="{{ url_for('assign_video', id = user.id) }}" id="myBtn" style="color: black">Video</a></li>
-                       <li><a  href="{{ url_for('assign_info', id = user.id) }}" id="myBtn" style="color: black">Information</a></li>
-                       <li><a  href="{{ url_for('assign_payment', id = user.id) }}" id="myBtn" style="color: black">Payment</a></li>
+                       <li><a  href="{{ url_for('users.update_to_admin', id = user.id) }}" id="myBtn" style="color: black">Admin</a></li>
+                       <li><a  href="{{ url_for('users.assign_session', id = user.id) }}" id="myBtn" style="color: black">Session</a></li>
+                       <li><a  href="{{ url_for('users.assign_video', id = user.id) }}" id="myBtn" style="color: black">Video</a></li>
+                       <li><a  href="{{ url_for('users.assign_info', id = user.id) }}" id="myBtn" style="color: black">Information</a></li>
+                       <li><a  href="{{ url_for('users.assign_payment', id = user.id) }}" id="myBtn" style="color: black">Payment</a></li>
                        </ul>
                    </div>
                </div>
@@ -92,7 +92,7 @@
 <card class="card text-center shadow-lg " id="create_card_trainer">
     <card class="card-body">
         <p style="font-size: 20px">NEW COURSE </p>
-        <button id="create_btn" value="CREATE"><a href="{{ url_for('create', username = current_user.username) }}" style="color: white">CREATE</a></button>
+        <button id="create_btn" value="CREATE"><a href="{{ url_for('users.create', username = current_user.username) }}" style="color: white">CREATE</a></button>
     </card>
 </card>
     <br>
@@ -130,7 +130,7 @@
                             {% else %}
 
                             <p style="font-size: 13px">once you start the session users will be notified 30 seconds earlier</p>
-                                <button value="VERIFY" id="card-btn" style="color: white"><a href="{{ url_for('session_verify',id= session_post.id) }}">VERIFY</a></button>
+                                <button value="VERIFY" id="card-btn" style="color: white"><a href="{{ url_for('users.session_verify',id= session_post.id) }}">VERIFY</a></button>
 
                             {% endif %}
                         </div>
@@ -158,14 +158,14 @@
                 <p><img src="../static/calendar-check.png" alt="" class="session-card-left">{{ posts.date }}<img src="../static/clock.png" alt="" class="session-card-right">{{posts.start_time}}-{{ posts.end_time }}</p>
                 <div class=" description"></div>
                     <h6><b style="text-transform: uppercase">{{ posts.title }}</b></h6>
-                    <a style="font-size: 12px;color:gray;text-transform: uppercase" class="text-justify text-left "  href={{ url_for('user',username=posts.author.username)}}  ><img style="padding: 5px" src="../static/profile_pics/{{ posts.author.image_file }}" alt="" class="rounded-circle  profilepic shadow-lg" width="30" height="30">{{ posts.author.username }}</a>
+                    <a style="font-size: 12px;color:gray;text-transform: uppercase" class="text-justify text-left "  href={{ url_for('users.user',username=posts.author.username)}}  ><img style="padding: 5px" src="../static/profile_pics/{{ posts.author.image_file }}" alt="" class="rounded-circle  profilepic shadow-lg" width="30" height="30">{{ posts.author.username }}</a>
                     <p style="font-size: 12px;color:gray" class="text-justify text-left ">{{ posts.lesson | length }} Scheduled sessions</p>
             <div class="row">
                     <p style="font-size: 12px;color:gray" class="text-justify text-left ">{{ posts.description }}</p>
             </div>
                     {% if current_user.id  not in current_user.book.user_id %}
                          <div class="text-center">
-                             <button value="BOOK" id="card-btn" style="color: white"><a  href="{{ url_for('book' ,id=posts.id) }}">BOOK</a></button></div>
+                             <button value="BOOK" id="card-btn" style="color: white"><a  href="{{ url_for('users.book' ,id=posts.id) }}">BOOK</a></button></div>
                     {% else %}
                         <div class="text-center"><button value="UNBOOK" id="card-btn" style="color: white">UNBOOK</button>
                         </div>
@@ -190,7 +190,7 @@
     {% endif %}
     {% endfor %}
 {% for page in all_posts.items %}
-        <a href="{{ url_for('user_profile',username=current_user.username,page_num=page) }}">{{ page }}</a>
+        <a href="{{ url_for('users.user_profile',username=current_user.username,page_num=page) }}">{{ page }}</a>
 
 {% endfor %}
 </div>
@@ -206,11 +206,11 @@
             <p><img src="../static/calendar-check.png" alt="" class="session-card-left">{{ posts.date }}<img src="../static/clock.png" alt="" class="session-card-right">{{posts.start_time}}-{{ posts.end_time }}</p>
             <div class="description"></div>
             <h6><b style="text-transform: uppercase">{{ posts.title }}</b></h6>
-            <a style="font-size: 12px;color:gray;text-transform: uppercase" class="text-justify text-left "  href={{ url_for('user',username=posts.author.username)}}  ><img style="padding: 5px" src="../static/profile_pics/{{ posts.author.image_file }}" alt="" class="rounded-circle  profilepic shadow-lg" width="30" height="30">{{ posts.author.username }}</a>
+            <a style="font-size: 12px;color:gray;text-transform: uppercase" class="text-justify text-left "  href={{ url_for('users.user',username=posts.author.username)}}  ><img style="padding: 5px" src="../static/profile_pics/{{ posts.author.image_file }}" alt="" class="rounded-circle  profilepic shadow-lg" width="30" height="30">{{ posts.author.username }}</a>
             <p style="font-size: 12px;color:gray" class="text-justify text-left ">{{ posts.description }}</p>
             <p style="font-size: 12px;color:gray" class="text-justify text-left ">{{ posts.lesson | length }} Scheduled sessions</p>
             <div class="text-center">
-                <button value="UNBOOK" id="card-btn" style="color: white"><a  href="{{ url_for('unbook' ,id=posts.id) }}">UNBOOK</a></button>
+                <button value="UNBOOK" id="card-btn" style="color: white"><a  href="{{ url_for('users.unbook' ,id=posts.id) }}">UNBOOK</a></button>
             </div>
         </card>
     </card>

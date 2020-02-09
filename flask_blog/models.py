@@ -7,8 +7,7 @@ import psycopg2
 
 from flask_blog import app
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:@qwerty1234!@localhost/postgres'
+
 
 db = SQLAlchemy(app)
 db.init_app(app)
