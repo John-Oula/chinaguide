@@ -3,11 +3,11 @@ import re
 import secrets
 
 import bcrypt
-from flask import Blueprint, send_from_directory, render_template, flash, request, redirect, url_for, session
+from flask import Blueprint,current_app, send_from_directory, render_template, flash, request, redirect, url_for, session
 from flask_login import login_user, current_user, login_required, logout_user
 from flask_mail import Message, Mail
 
-from flask_blog import app
+from flask import current_app
 from flask_blog.models import Upload, Post, User, db, followers, Lesson, Comment
 from flask_blog.posts.forms import Lesson_form, Upload_form, Session_form
 from flask_blog.users.forms import Signup_form, Login_form, UpdateAccount, Verify_form, Request_reset, Reset_password
@@ -15,7 +15,7 @@ from flask_blog.users.utils import save_pic
 from flask_bcrypt import Bcrypt
 
 users = Blueprint('users',__name__)
-bcrypt = Bcrypt(app)
+
 
 #admin = Admin(app, name='DASHBOARD')
 #admin.add_view(ModelView(User, db.session))
@@ -23,7 +23,7 @@ bcrypt = Bcrypt(app)
 #admin.add_view(ModelView(Lesson, db.session))
 #admin.add_view(ModelView(Upload, db.session))
 
-mail = Mail(app)
+
 
 
 @users.route('/signup',methods=['POST','GET'])
@@ -400,7 +400,7 @@ def upload(username):
         _, f_ext = os.path.splitext(file.filename)
         file_hex = random_hex
         file_fn = random_hex + f_ext
-        file.save(os.path.join(app.root_path, 'static/videos/discover videos', file_fn))
+        file.save(os.path.join(current_app.root_path, 'static/videos/discover videos', file_fn))
         path = os.path.join(file_fn)
         upload = Upload(title=form.title.data,description=form.description.data,category=form.category.data,price= form.price.data,upload_ref=path,uploader=current_user)
         db.session.add(upload)
@@ -409,7 +409,7 @@ def upload(username):
 
         print(file_hex)
 
- #       f.save(os.path.join(app.config['UPLOAD_FOLDER']+f))
+ #       f.save(os.path.join(current_app.config['UPLOAD_FOLDER']+f))
         return redirect(url_for('users.discover',upload_ref=file_hex,username=current_user.username))
     return render_template('UPLOADS.html',user=user,user_role=user_role,form =form,image_file=image_file)
 

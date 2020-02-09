@@ -5,16 +5,10 @@ from flask_sqlalchemy import SQLAlchemy
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 import psycopg2
 
-from flask_blog import app
+from flask import current_app
 
+from flask_blog import login_manager,db
 
-
-db = SQLAlchemy(app)
-db.init_app(app)
-
-
-login_manager = LoginManager()
-login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -65,12 +59,12 @@ class User(db.Model, UserMixin):
 
 
     def get_reset_token(self,expires_sec=1800):
-        s = Serializer(app.config['SECRET_KEY'],expires_sec)
+        s = Serializer(current_app.config['SECRET_KEY'],expires_sec)
         return s.dumps({'id':self.id}).decode('utf-8')
 
     @staticmethod
     def verify_reset_token(token):
-        s = Serializer(app.config['SECRET_KEY'])
+        s = Serializer(current_app.config['SECRET_KEY'])
         try:
             id = s.loads(token)['id']
         except:
