@@ -1,0 +1,177 @@
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div class="carousel-item active" style="background-image: url('/static/unitalk.png')">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>First Slide</h3>
+                <p>This is a description for the first slide.</p>
+            </div>
+        </div>
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('/static/unitalk2.png')">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>Second Slide</h3>
+                <p>This is a description for the second slide.</p>
+            </div>
+        </div>
+        </div>
+<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+        </div>
+
+
+
+    <div class=>
+<card class="card shadow-lg" id="create_card">
+    <card class="card-body">
+        <div class="row">
+                    <div class="col-4">
+                          <ul class="nav flex-column" role="tablist" style="background-color: white">
+    <li class="nav-item">
+            <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#title-pill">TITLE</a>
+    </li>
+    <li>
+      <a class="nav-link " data-toggle="pill" href="#structure-pill">STRUCTURE</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#schedule-pill">SCHEDULE</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#verify-pill">VERIFICATION</a>
+    </li>
+  </ul>
+
+                    </div>
+
+
+        <div class="col-7 text-center">
+              <div class="tab-content">
+    <div id="title-pill" class="container tab-pane active"><br>
+        <form action="" class="text-center" method="POST">
+            {{ form.title.label }}<br>
+        {{ form.title(class = "input-box-border border border-top-0 border-left-0 border-right-0") }}
+        <br>
+            {{ form.category.label (style="margin-top:40px")}}
+            <br>
+            {{ form.category( class="category" ) }}
+            <br>
+            <br>
+            {{ form.description.label }}
+            <br>
+            {{ form.description( class = "description-field") }}
+</form>
+
+    </div>
+
+
+
+    <div id="schedule-pill" class="container tab-pane fade"><br>
+       <div id="demo1">
+            <div class="month " >
+  <ul>
+    <li class="prev">&#10094;</li>
+    <li class="next">&#10095;</li>
+    <li>August<br><span style="font-size:18px">2017</span></li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li>Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  <li>Sa</li>
+  <li>Su</li>
+</ul>
+
+<ul class="days">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+  <li>7</li>
+  <li>8</li>
+  <li>9</li>
+  <li><span class="active">10</span></li>
+  <li>11</li>
+
+</ul>
+    </div>
+        <form action="" method="POST">
+            {{ form.date }}
+        </form>
+
+    </div>
+    <div id="verify-pill" class="container tab-pane fade"><br>
+         <div  id="demo3">
+
+
+
+       <div class="row">
+                  <div class="col-4">
+                  {% if  current_user.id_type and current_user.id_number and current_user.id_document and current_user.nationality and current_user.occupation and
+                  current_user.email and current_user.residency and current_user.phone == None  %}
+                        <form action="" method="POST">
+                            {{ verify_form.id_type.label }}
+                            {{ verify_form.id_type(class="input-box-border border border-top-0 border-left-0 border-right-0") }}
+
+                            {{ verify_form.id_number.label }}
+                            {{ verify_form.id_number(class="input-box-border border border-top-0 border-left-0 border-right-0") }}
+
+
+                            {{ verify_form.email.label }}
+                            {{ verify_form.email(class="input-box-border border border-top-0 border-left-0 border-right-0") }}
+
+
+
+                            {{ verify_form.nationality.label }}
+                            {{ verify_form.nationality(class="input-box-border border border-top-0 border-left-0 border-right-0") }}
+
+                            {{ verify_form.residency.label }}
+                            {{ verify_form.residency(class="input-box-border border border-top-0 border-left-0 border-right-0") }}
+
+                            {{ verify_form.occupation.label }}
+                            {{ verify_form.occupation(class="input-box-border border border-top-0 border-left-0 border-right-0") }}
+
+                            {{ verify_form.phone.label }}
+                            {{ verify_form.phone(class="input-box-border border border-top-0 border-left-0 border-right-0") }}
+                        </form>
+                      {% else %}
+                      <div>
+                      <p>Your'e information is already verified</p>
+                      </div>
+                      {% endif %}
+
+
+        </div>
+       </div>
+
+
+       </div>
+
+    </div>
+  </div>
+
+        </div>
+        </div>
+
+        <input id="card-btn" type="submit" class="btn-text text-center" style="margin-top: 200px;margin-left: 800px" value="SUBMIT" hrre></input>
+
+    </card>
+</card>
+</div>
