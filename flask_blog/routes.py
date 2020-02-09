@@ -587,7 +587,7 @@ def upload(username):
         _, f_ext = os.path.splitext(file.filename)
         file_hex = random_hex
         file_fn = random_hex + f_ext
-        file.save(os.path.join(app.root_path, '/static/videos/discover videos', file_fn))
+        file.save(os.path.join(app.root_path, 'static/videos/discover videos', file_fn))
         path = os.path.join(file_fn)
         upload = Upload(title=form.title.data,description=form.description.data,category=form.category.data,price= form.price.data,upload_ref=path,uploader=current_user)
         db.session.add(upload)
