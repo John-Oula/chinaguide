@@ -107,6 +107,6 @@ class UserModelCase(unittest.TestCase):
         print(author1, 'created session titled')
         print(author2)
 
-db.drop_all()
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
