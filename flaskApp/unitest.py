@@ -9,7 +9,7 @@ class UserModelCase(unittest.TestCase):
     def setUp(self):
         current_app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:@qwerty1234!@localhost/postgres'
         db.drop_all()
-        db.create_all()
+
 
     def test_functions(self):
         u1 = User(role=2,username='john', password='thisatest',   fullname='John Oula',id_type='Passport',id_number='AK0123545',nationality='American',occupation='Engineer',email="thisisatest1@gmail.com",province='Jiangsu',city='Nanjing',phone='133023545797')
