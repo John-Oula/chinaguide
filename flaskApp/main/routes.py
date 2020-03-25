@@ -3,7 +3,7 @@ import os
 from flask import Blueprint, render_template, flash, send_from_directory
 from flask_login import login_required
 
-from flask_blog.models import Post, Upload
+from flaskApp.models import Post, Upload
 
 main = Blueprint('main',__name__)
 
@@ -58,7 +58,7 @@ def discover_h(req_path):
 
     # Permission
 
-    BASE_DIR = '/Users/ASUS/Desktop/100CHINAGUIDE/flask_blog/static'
+    BASE_DIR = '/Users/ASUS/Desktop/100CHINAGUIDE/flaskApp/static'
 
     # Joining the base and the requested path
     abs_path = os.path.join(BASE_DIR, req_path)

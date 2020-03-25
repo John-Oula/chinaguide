@@ -163,11 +163,11 @@
             <div class="row">
                     <p style="font-size: 12px;color:gray" class="text-justify text-left ">{{ posts.description }}</p>
             </div>
-                    {% if current_user.id  not in current_user.book.user_id %}
+                    {% if current_user  not in current_user.book.user_id %}
                          <div class="text-center">
-                             <button value="BOOK" id="card-btn" style="color: white"><a  href="{{ url_for('users.book' ,id=posts.id) }}">BOOK</a></button></div>
+                             <button value="BOOK" id="card-btn" style="color: white"><a  href="{{ url_for('posts.action' ,id=posts.id,choice=book) }}">BOOK</a></button></div>
                     {% else %}
-                        <div class="text-center"><button value="UNBOOK" id="card-btn" style="color: white">UNBOOK</button>
+                        <div class="text-center"><button value="UNBOOK" id="card-btn" style="color: white"><a  href="{{ url_for('posts.action' ,id=posts.id,choice=unbook) }}">UNBOOK</a></button>
                         </div>
                     {% endif %}
                     </div>

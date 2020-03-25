@@ -1,18 +1,19 @@
+from flask import current_app
 import os
 import re
-import secrets
+from os import urandom
 
-import bcrypt
-from flask import Blueprint,current_app, send_from_directory, render_template, flash, request, redirect, url_for, session
+
+from flask import Blueprint, send_from_directory, render_template, flash, request, redirect, url_for, session
+
 from flask_login import login_user, current_user, login_required, logout_user
-from flask_mail import Message, Mail
+from flask_mail import Message
 
-from flask import current_app
-from flask_blog.models import Upload, Post, User, db, followers, Lesson, Comment
-from flask_blog.posts.forms import Lesson_form, Upload_form, Session_form
-from flask_blog.users.forms import Signup_form, Login_form, UpdateAccount, Verify_form, Request_reset, Reset_password
-from flask_blog.users.utils import save_pic
-from flask_bcrypt import Bcrypt
+from flaskApp import mail,bcrypt
+from flaskApp.models import Upload, Post, User, db, followers, Lesson, Comment
+from flaskApp.posts.forms import Lesson_form, Upload_form, Session_form
+from flaskApp.users.forms import Signup_form, Login_form, UpdateAccount, Verify_form, Request_reset, Reset_password
+from flaskApp.users.utils import save_pic
 
 users = Blueprint('users',__name__)
 
@@ -308,7 +309,7 @@ def discover(req_path,username):
     # Permission
     user_role = current_user.role
 
-    BASE_DIR = '/Users/ASUS/Desktop/100CHINAGUIDE/flask_blog/static'
+    BASE_DIR = '/Users/ASUS/Desktop/100CHINAGUIDE/flaskApp/static'
 
     # Joining the base and the requested path
     abs_path = os.path.join(BASE_DIR, req_path)
@@ -394,7 +395,7 @@ def upload(username):
     user = User.query.filter_by(username=username).first_or_404()
     form = Upload_form()
     if request.method == 'POST':
-        random_hex = secrets.token_hex(8)
+        random_hex = urandom(8).hex()
         file  = request.files['file']
         file_data  = request.files['file']
         _, f_ext = os.path.splitext(file.filename)
@@ -531,16 +532,7 @@ def badge_admin():
 
 
 
-def send_reset_email(user):
-    token = user.get_reset_token()
-    msg = Message('Password Reset Requset',
-                  sender='cjohn222.jc@gmail.com',
-                  recipients=[user.email])
-    msg.body = f'''THIS IS A TEST
-    {url_for('users.reset_token',token=token,_external=True)}
 
-    '''
-    mail.send(msg)
 
 
 @users.route('/reset_password' , methods=['POST','GET'])
@@ -575,3 +567,11 @@ def reverse_admin():
     user = User.query.filter_by(role=1).first()
     user.role = 0
     db.session.commit()
+
+def send_reset_email(user):
+    token = user.get_reset_token()
+    msg = Message('Password Reset Requset',
+                  sender='cjohn222.jc@gmail.com',
+                  recipients=[user.email])
+    msg.body = f'''THIS IS A TEST{url_for('users.reset_token',token=token,_external=True)}'''
+    mail.send(msg)

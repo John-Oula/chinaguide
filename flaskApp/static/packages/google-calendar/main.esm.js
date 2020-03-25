@@ -4,7 +4,7 @@ Docs & License: https://fullcalendar.io/
 (c) 2019 Adam Shaw
 */
 
-import { createPlugin, refineProps, requestJson, addDays } from '@fullcalendar/core';
+import {addDays, createPlugin, refineProps, requestJson} from '@fullcalendar/core';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.

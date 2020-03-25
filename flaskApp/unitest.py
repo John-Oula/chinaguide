@@ -1,13 +1,13 @@
-from datetime import datetime, timedelta
 import unittest
-from flask_blog import app
-from flask_blog.models import User, Post, Lesson, db, Comment, likes, Upload
-from flask import jsonify
+
+from flask import current_app
+
+from flaskApp.models import User, Post, Lesson, db, Comment, Upload
 import psycopg2
 
 class UserModelCase(unittest.TestCase):
     def setUp(self):
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:@qwerty1234!@localhost/postgres'
+        current_app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:@qwerty1234!@localhost/postgres'
         db.drop_all()
         db.create_all()
 
@@ -106,7 +106,7 @@ class UserModelCase(unittest.TestCase):
         #       print(join)
         print(author1, 'created session titled')
         print(author2)
-
+        db.drop_all()
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

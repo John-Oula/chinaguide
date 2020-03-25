@@ -1,9 +1,10 @@
 from flask_login import current_user
 from flask_wtf import FlaskForm
-from wtforms import validators,StringField, PasswordField, SubmitField, ValidationError, IntegerField, DateField, FileField
+from wtforms import validators, StringField, PasswordField, SubmitField, ValidationError, IntegerField, DateField, \
+    FileField
 from wtforms.validators import Required
 
-from flask_blog.models import User
+from flaskApp.models import User
 
 
 class Signup_form(FlaskForm):
@@ -47,7 +48,6 @@ class Verify_form(FlaskForm):
     city = StringField('City', validators=[Required()])
     occupation = StringField('Occupation', validators=[Required()])
     phone = IntegerField('Phone', validators=[Required()])
-#    city = RadioField('City',choices=[('Bengbu','Bengbu'),('Hefei','Hefei'),('Huainan','Huainan'),('Huangshan','Huangshan'),('Ma’anshan','Ma’anshan'),('Shexian','Shexian'),('Tongcheng','Tongcheng') ('Tongling','Tongling'),('Wuhu','Wuhu'),('Xuancheng','Xuancheng')])
 
 
 

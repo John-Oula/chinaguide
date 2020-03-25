@@ -6,7 +6,7 @@ Docs & License: https://fullcalendar.io/
 
 import * as momentNs from 'moment';
 import 'moment-timezone/builds/moment-timezone-with-data';
-import { createPlugin, NamedTimeZoneImpl } from '@fullcalendar/core';
+import {createPlugin, NamedTimeZoneImpl} from '@fullcalendar/core';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.

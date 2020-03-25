@@ -3,25 +3,24 @@ import re
 from flask import Blueprint, redirect, url_for, request, render_template
 from flask_login import login_required, current_user
 
-from flask_blog.models import Post, db, Upload, User, Comment, Lesson
-from flask_blog.posts.forms import Comment_form, Lesson_form
+from flaskApp.models import Post, db, Upload, User, Comment, Lesson
+from flaskApp.posts.forms import Comment_form, Lesson_form
 
 posts = Blueprint('posts',__name__)
 
-
-
-
-@posts.route('/book/<int:id>')
-@login_required
 def book(id):
     post=Post.query.filter_by(id=id).first()
     post.bookers.append(current_user)
     db.session.commit()
-
     return redirect(url_for('users.user_profile',username=current_user.username))
 
-@posts.route('/unbook/<int:id>')
+
+@posts.route('/book<int:id>/<choice>')
 @login_required
+def action(choice,id):
+    return choice(id)
+
+
 def unbook(id):
     post=Post.query.filter_by(id=id).first()
     post.bookers.remove(current_user)

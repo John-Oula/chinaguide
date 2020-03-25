@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import  validators,StringField, TextAreaField, SelectField, DateTimeField, FileField, SubmitField
-from wtforms.validators import DataRequired
+
 
 class Session_form(FlaskForm):
     title = StringField('TITLE',[validators.DataRequired()])

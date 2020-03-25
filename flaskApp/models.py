@@ -1,13 +1,12 @@
+from flask import current_app
 import datetime
-from DateTime import DateTime
-from flask_login import UserMixin, LoginManager
-from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
+from flaskApp import login_manager, db
+
+
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 import psycopg2
 
-from flask import current_app
-
-from flask_blog import login_manager,db
 
 
 @login_manager.user_loader
