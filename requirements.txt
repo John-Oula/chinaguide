@@ -68,7 +68,7 @@ js.momentjs==2.13.1
 jsonify==0.5
 jsonpickle==1.2
 kiwisolver==1.0.1
-lxml==4.3.3
+lxml==4.6.2
 Markdown==3.1.1
 MarkupSafe==1.1.1
 marshmallow==3.2.2
